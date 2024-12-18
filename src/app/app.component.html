@@ -1,0 +1,74 @@
+<div class="container">
+  <h3 class="title">My First reactive Form - "User Detail !!!"</h3>
+  <br><br>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+          <div class="row col-sm-5">
+              <div class="form-group">
+                  <label for="firstname">First Name</label>
+                  <input type="text" id="firstname" name="firstname" formControlName="firstname"  class="form-control">
+                  <span class="help-block" *ngIf="!userForm.get('firstname')?.valid && userForm.get('firstname')?.touched">enter a valid name!</span>
+              </div>
+
+              <div class="form-group">
+                  <label for="firstname">Last Name</label>
+                  <input type="text" id="lastname" name="lastname" formControlName="lastname" class="form-control">
+              </div>
+
+              <div class="form-group">
+                  <label for="firstname">Email</label>
+                  <input type="text" id="email" name="email" formControlName="email" class="form-control" >
+                  <span class="help-block" *ngIf="!userForm.get('email')?.valid && userForm.get('email')?.touched">enter a valid email!</span>
+              </div>
+
+              <div class="form-group">
+                  <label for="gender">Gender</label>&nbsp;&nbsp;&nbsp;
+                  <input type="radio" value="male" name="gender" formControlName="gender">Male
+                  <input type="radio" value="female" name="gender" formControlName="gender">Female
+              </div>
+
+
+              <div class="form-group">
+                 <label for="isMarried">Married</label>&nbsp;&nbsp;&nbsp;
+                 <input type="checkbox" name="isMarried" formControlName="isMarried" >
+              </div>
+
+            
+
+          </div>
+
+          <div class="row col-sm-2"></div>
+          <div class="row col-sm-5">
+              <div class="form-group" formGroupName="address" >
+                  <div class="form-group">
+                      <label for="country">Country</label>
+                      <select id="country" name="country" formControlName="country" class="form-control">
+                        <option *ngFor="let c of countryList">
+                          {{c.countryname}}
+                      </option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="city">City</label>
+                      <input type="text"  name="city" formControlName="city" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label for="street">Street</label>
+                      <input type="text"  name="street" formControlName="street"  class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label for="pincode">Pin Code</label>
+                      <input type="text"  name="pincode" formControlName="pincode" class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                      <button type="submit" class="btn btn-info" [disabled]="!userForm.valid">Submit</button>
+                  </div>
+
+              </div>
+
+          </div>
+
+      </div>
+  </form>
+</div>
